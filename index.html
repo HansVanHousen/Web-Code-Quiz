@@ -77,7 +77,7 @@
 
       .win-loss-container {
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
           font-size: 18px;
           margin-bottom: 10px;
       }
@@ -152,17 +152,26 @@
         <div class="card results">
           <div class = "win-loss-container">
           <h2>Score: <span id= "score-counter" class="win">0 </span> </h2>
-         
           </div>
-          <!-- <imput type="text" id="initials"></imput>
-          <button class="reset-button">Reset Timer</button> -->
+          <!-- <button class="reset-button">Initials</button> -->
         </div>
         <div class= "card timer">
-            <!-- <div class = "timer-text"> </div> -->
+            <div class = "timer-text"> </div>
             <div id="timer-count" class="large-font" ></div>
-            <!-- <div  ></div> -->
+            <div  ></div>
             <h3>Temporal Units Remaining</h3>
         </div>
+      </div>
+      <section id="high-scores" class="hide">
+        <h2>High Scores</h2>
+        <form id="initialsForm">
+          <input type="text" id="initials">Enter initials and enter to save score</input>
+
+        </form> 
+        <ul id="score-list">
+          <!-- High scores will be dynamically added here -->
+        </ul>
+      
       </section>
     </main>
 

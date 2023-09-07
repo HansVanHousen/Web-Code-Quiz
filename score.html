@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Scores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+  
+        #start-page {
+            text-align: center;
+            padding: 20px;
+        }
+  
+        .large-font {
+            font-size: 24px;
+        }
+  
+        #start-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+  
+        #start-button:hover {
+            background-color: #0056b3;
+        }
+  
+        #main-quiz {
+            text-align: center;
+            margin: 20px;
+        }
+  
+        .question {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+  
+        #question-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+  
+        .answerbtn {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            margin: 5px;
+            cursor: pointer;
+        }
+  
+        .answerbtn:hover {
+            background-color: #0056b3;
+        }
+  
+        .results {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+  
+        .win-loss-container {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+  
+        .win, .lose {
+            color: #007bff;
+        }
+  
+        #initials {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+  
+        .reset-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+  
+        .reset-button:hover {
+            background-color: #0056b3;
+        }
+  
+        .timer {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+  
+        #timer-count {
+            font-size: 36px;
+            color: #007bff;
+        }
+  
+        h3 {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    Highscores
+    <div id= "highscores"></div>
+    <script src="highscores.js"></script>
+</body>
+</html>

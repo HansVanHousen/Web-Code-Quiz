@@ -20,3 +20,38 @@ THEN I can save my initials and my score
 * The URL of the functional, deployed application.
 
 * The URL of the GitHub repository, with a unique name and a readme describing the project.
+
+ // if (questionIndex === questions.length1) {
+  //  return endQuiz()
+  // }
+  // if (questionIndex < questions.length - 1) {
+  //   questionIndex++;
+  //   startQuiz();
+  // }
+
+  // function endQuiz() {
+  //   questions.style.display = "none"
+  //   answers.style.display = "none"
+  // }
+}
+
+// function endQuiz() {
+//   questions.style.display = "none"
+//   answers.style.display = "none"
+// }
+// function onLoad() {
+//   initials.style.display = "none"
+// }
+// onLoad()
+
+
+
+
+function onStart() {
+  function hideStart() {
+  document.getElementById("start-button").style.display = "none";
+  }
+  var SB= document.getElementById("start-button");
+  SB.addEventListener("click", hideStart);
+}
+onStart()

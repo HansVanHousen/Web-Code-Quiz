@@ -1,78 +1,79 @@
-// var lose = document.querySelector(".lose");
 var setNextQuestion = document.getElementById("next-btn");
 var questioncontainer = document.getElementById("questions");
 var startButton = document.querySelector("#start-button");
 var questiontext = document.getElementById("question-text");
+var initialsForm = document.getElementById("initialsForm")
+var initials = document.getElementById("initials")
+
 
 var timer = document.getElementById("timer-count");
 var score = document.getElementById("score-counter");
 
+let storedUsers;
 let timerCount = 10;
 var scoreCount = 0;
 
-// var numBlanks = 0;
-// var loseCounter = 0;
+
 var isWin = false;
-// var timer;
-// var timerCount = 100;
+
 
 var questionIndex = 0;
 
 var questions = [
   {
-    question: "who is the captain of NCC-1701-D",
-    answers: ["Kirk", "Picard", "Janeway"],
-    correct: "Picard",
+    question: "Which method is used to add an element to the end of an array in JavaScript?",
+    answers: ["push()", "append()", "addToEach()"],
+    correct: "push()",
   },
 
   {
-    question: "who is 2nd in command on DS9",
-    answers: ["Worf", "Riker", "Kira"],
-    correct: "Kira",
+    question: "What is the purpose of the addEventListener method in JavaScript?",
+    answers: ["To create an element on the webpage", "To add a function that executes when an event occurs ", "To style a webpage"],
+    correct: "To add a function that executes when an event occurs ",
   },
 
   {
-    question: "If you have a Horga'hn on display, what do you seek?",
-    answers: ["The Celestial Temple", "Jamaharon", "A Borg Cube"],
-    correct: "Jamaharon",
+    question: "Which data type is used to represent a list of values in JavaScript?",
+    answers: ["object", "array", "string"],
+    correct: "array",
   },
 
   {
-    question: "What has Voyager gone too far to be stopped by?",
-    answers: ["Dust", "The Borg", "Lack of Dilithium Crystals"],
-    correct: "Dust",
+    question: "How do you declare a function in JavaScript?",
+    answers: ["function myFunction() { }", "var myFunction = function() { }", "def myFunction()"],
+    correct: "function myFunction() { }",
   },
 
   {
-    question: "What class is the USS Cerritos?",
-    answers: ["Galaxy", "California", "Dreadnaught"],
-    correct: "California",
+    question: "What is the purpose of the typeof operator in JavaScript?",
+    answers: ["To check if an element exists in the DOM", "To determine the data type of a value", "To create a new variable"],
+    correct: "To determine the data type of a value ",
   },
   {
-    question: "What class is the name of Data's Brother?",
-    answers: ["Lor", "Lal", "Deta"],
-    correct: "Lor",
+    question: "How do you write an if statement in JavaScript?",
+    answers: ["if () { }", "if {} else {}", "if () { } else {} "],
+    correct: "if () { } else {} ",
   },
   {
-    question: "Where does the federation first engage the Borg?",
-    answers: ["Wolf 359", "Yavin IV", "The Delta Quadrant"],
-    correct: "Wolf 359",
+    question: "Which operator is used to compare both value and type in JavaScript?",
+    answers: ["=", "==", "==="],
+    correct: "===",
   },
   {
-    question: "who are the enemies of the wormhole aliens?",
-    answers: ["Pah-Wraiths", "The Dominion", "The Cardassians"],
-    correct: "Pah-Wraiths",
+    question: "What is the purpose of the getElementById method in JavaScript?",
+    answers: ["To retrieve an element by its class name", "To retrieve an element by its ID", "To retrieve all elements on the webpage"],
+    correct: "To retrieve an element by its ID",
   },
   {
-    question: "Which caracter was NOT played by Jeffrey Combs?",
-    answers: ["Weyoun", "Brunt", "Morn"],
-    correct: "Morn",
+    question: "What is the purpose of the JSON.parse() function in JavaScript?",
+    answers: ["To convert a JSON string to a JavaScript object", "To convert a JavaScript object to a JSON string", "To format text as JSON"],
+    correct: "To convert a JSON string to a JavaScript object",
   },
   {
     question:
-      "What is the name of the planet Picard finds himself on in The Inner Light?",
-    answers: ["Katann", "Catan", "Risa"],
-    correct: "Katann",
+      "Which event is triggered when an HTML form is submitted?",
+    answers: ["onClick", "onSubmit", "onFormSubmit"],
+    correct: "onSubmit",
   },
 ];
 startButton.addEventListener("click", function () {
@@ -88,41 +89,38 @@ function startTimer() {
   let countdown = setInterval(() => {
     timerCount--;
     timer.textContent = timerCount;
-    if(timerCount <=0) {
-        clearInterval(countdown)
-        // timer.style.display = "none"
+    if (timerCount <= 0) {
+      clearInterval(countdown);
     }
   }, 1000);
 }
 
-function startQuiz() {
-  // score.textContent= "score: " + scoreCount
-  if (questionIndex < questions.length){
 
-  questiontext.innerText = questions[questionIndex].question;
-  var btntext1 = document.getElementById("btn1");
-  var btntext2 = document.getElementById("btn2");
-  var btntext3 = document.getElementById("btn3");
-  btntext1.innerText = questions[questionIndex].answers[0];
-  btntext2.innerText = questions[questionIndex].answers[1];
-  btntext3.innerText = questions[questionIndex].answers[2];
-  btntext1.addEventListener("click", checkAnswer);
-  btntext2.addEventListener("click", checkAnswer);
-  btntext3.addEventListener("click", checkAnswer);
-} else {
-// end quiz
-}
+function startQuiz() {
+  if (questionIndex < questions.length) {
+    questiontext.innerText = questions[questionIndex].question;
+    var btntext1 = document.getElementById("btn1");
+    var btntext2 = document.getElementById("btn2");
+    var btntext3 = document.getElementById("btn3");
+    btntext1.innerText = questions[questionIndex].answers[0];
+    btntext2.innerText = questions[questionIndex].answers[1];
+    btntext3.innerText = questions[questionIndex].answers[2];
+    btntext1.addEventListener("click", checkAnswer);
+    btntext2.addEventListener("click", checkAnswer);
+    btntext3.addEventListener("click", checkAnswer);
+  } else {
+  }
 }
 function checkAnswer(event) {
-//   console.log(event.target.innerText);
+  //   console.log(event.target.innerText);
   var chosenAnswer = event.target.innerText;
   if (chosenAnswer === questions[questionIndex].correct) {
-// 58
+  
     scoreCount++;
-    console.log("correct")
-    score.textContent = scoreCount
+    console.log("correct");
+    score.textContent = scoreCount;
   } else {
-    console.log("not correct")
+    console.log("not correct");
 
     timerCount--;
   }
@@ -131,9 +129,48 @@ function checkAnswer(event) {
     questionIndex++;
     startQuiz();
   }
-  startQuiz()
+  if (questionIndex === questions.length) {
+    endQuiz(); // Call endQuiz when all questions are answered
+  }
 }
 
-function setNextQuestion() {
-  showmainList([0]);
+function endQuiz() {
+ 
+  document.querySelector("#high-scores").style.display = "block";
+
+  let savedScores = JSON.parse(localStorage.getItem("highscores"));
+
+  let scoreList = document.getElementById("score-list");
+  scoreList.innerHTML = "";
+  savedScores.forEach((score, index) => {
+    let listItem = document.createElement("li");
+    listItem.textContent = `${index + 1}. ${score.user}: ${score.userScore}`;
+    scoreList.appendChild(listItem);
+  });
 }
+
+
+
+function onLoad(){
+if(JSON.parse(localStorage.getItem("highscores")) === null) {
+storedUsers = []
+}
+else {
+  storedUsers = JSON.parse(localStorage.getItem("highscores"))
+}
+console.log(storedUsers)
+}
+onLoad()
+
+function saveScore(e){
+e.preventDefault();
+let newScore = {
+  user: initials.value,
+  userScore: scoreCount
+}
+storedUsers.push(newScore)
+localStorage.setItem("highscores", JSON.stringify(storedUsers));
+endQuiz()
+}
+initialsForm.addEventListener("submit", saveScore)
+
