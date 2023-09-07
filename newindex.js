@@ -1,16 +1,18 @@
-var win = document.querySelector(".win");
-var lose = document.querySelector(".lose");
+// var lose = document.querySelector(".lose");
 var startButton = document.querySelector("#start-button");
 
-var timer = document.getElementById("timer");
 var setNextQuestion = document.getElementById("next-btn");
 var questioncontainer = document.getElementById("questions");
 var questiontext = document.getElementById("question-text");
-var initials = document.getElementById("initials")
+
+var timer = document.getElementById("timer-count");
+var score = document.getElementById("score-counter");
+
+let timerCount = 10;
+var scoreCount = 0;
 
 var numBlanks = 0;
-var winCounter = 0;
-var loseCounter = 0;
+// var loseCounter = 0;
 var isWin = false;
 // var timer;
 // var timerCount = 100;
@@ -82,39 +84,20 @@ startButton.addEventListener("click", function () {
 });
 
 function startTimer() {
-  let timerCount = 10;
   timer.textContent = timerCount;
   // use id for timer element
- let countdown = setInterval(() => {
-    timer--;
+  let countdown = setInterval(() => {
+    timerCount--;
     timer.textContent = timerCount;
     if(timerCount <=0) {
         clearInterval(countdown)
-        timer.style.display = "none"
+        // timer.style.display = "none"
     }
   }, 1000);
 }
 
-// console.log(questions[questionIndex]);
-// console.log(questions[questionIndex].question);
-// console.log(questions[questionIndex].answers);
-// console.log(questions[questionIndex].correct);
-
-// The startGame function is called when the start button is clicked
-// function startGame() {
-// isWin = false;
-// timerCount = 100;
-// startButton.classList.add("hide");
-// currentQuestionsIndex = 0;
-// setNextQuestion()
-// // Prevents start button from being clicked when round is in progress
-// startButton.disabled = true;
-// renderBlanks()
-// startTimer()
-// }
-// startTimer();
-
 function startQuiz() {
+  // score.textContent= "score: " + scoreCount
   questiontext.innerText = questions[questionIndex].question;
   var btntext1 = document.getElementById("btn1");
   var btntext2 = document.getElementById("btn2");
@@ -129,38 +112,23 @@ function startQuiz() {
 function checkAnswer(event) {
 //   console.log(event.target.innerText);
   var chosenAnswer = event.target.innerText;
-  if (chosenAnswer == questions[questionIndex].correct) {
-
-    winCounter++;
+  if (chosenAnswer === questions[questionIndex].correct) {
+// 58
+    scoreCount++;
     console.log("correct")
   } else {
     console.log("not correct")
 
-    loseCounter++;
+    timerCount--;
   }
 
   if (questionIndex < questions.length - 1) {
     questionIndex++;
     startQuiz();
   }
+  startQuiz()
 }
 
 function setNextQuestion() {
   showmainList([0]);
 }
-
-function end()
-timer.style.display = "none"
-questions.style.display = "none"
-answers.style.display = "none"
-initials.style.display = "none"
-
-function load() {
-initials.style.display = "none"
-}
-load()
-//   function loadQuestion() {
-//     var question = questions[questionIndex];
-//     $("#main-quiz").children("h1").text(questions.question);
-//     $("#main-quiz").children(".answers")children().eq(0).text(question.answers[0]);
-//   }

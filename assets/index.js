@@ -1,15 +1,17 @@
-var win = document.querySelector(".win");
-var lose = document.querySelector(".lose");
-var startButton = document.querySelector("#start-button");
-
-var timer = document.getElementById("timer-count");
+// var lose = document.querySelector(".lose");
 var setNextQuestion = document.getElementById("next-btn");
 var questioncontainer = document.getElementById("questions");
+var startButton = document.querySelector("#start-button");
 var questiontext = document.getElementById("question-text");
 
-var numBlanks = 0;
-var winCounter = 0;
-var loseCounter = 0;
+var timer = document.getElementById("timer-count");
+var score = document.getElementById("score-counter");
+
+let timerCount = 10;
+var scoreCount = 0;
+
+// var numBlanks = 0;
+// var loseCounter = 0;
 var isWin = false;
 // var timer;
 // var timerCount = 100;
@@ -81,7 +83,6 @@ startButton.addEventListener("click", function () {
 });
 
 function startTimer() {
-  let timerCount = 10;
   timer.textContent = timerCount;
   // use id for timer element
   let countdown = setInterval(() => {
@@ -95,6 +96,9 @@ function startTimer() {
 }
 
 function startQuiz() {
+  // score.textContent= "score: " + scoreCount
+  if (questionIndex < questions.length){
+
   questiontext.innerText = questions[questionIndex].question;
   var btntext1 = document.getElementById("btn1");
   var btntext2 = document.getElementById("btn2");
@@ -105,24 +109,29 @@ function startQuiz() {
   btntext1.addEventListener("click", checkAnswer);
   btntext2.addEventListener("click", checkAnswer);
   btntext3.addEventListener("click", checkAnswer);
+} else {
+// end quiz
+}
 }
 function checkAnswer(event) {
 //   console.log(event.target.innerText);
   var chosenAnswer = event.target.innerText;
-  if (chosenAnswer == questions[questionIndex].correct) {
-
-    winCounter++;
+  if (chosenAnswer === questions[questionIndex].correct) {
+// 58
+    scoreCount++;
     console.log("correct")
+    score.textContent = scoreCount
   } else {
     console.log("not correct")
 
-    loseCounter++;
+    timerCount--;
   }
 
   if (questionIndex < questions.length - 1) {
     questionIndex++;
     startQuiz();
   }
+  startQuiz()
 }
 
 function setNextQuestion() {
